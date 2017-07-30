@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<shortcuts>
+    <skipIfNotSupported/>
+    <programGroup defaultName="QSystem" location="startMenu"/>
+    <shortcut
+        os="windows"
+        name="Ponto de registo"
+        target="$INSTALL_PATH/Welcome.bat"
+        commandLine=""
+        workingDirectory="$INSTALL_PATH"
+        description="Ponto de registo e impressão de senhas"
+        iconFile="$INSTALL_PATH/icons/welcome.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Ponto de registo"/>
+    </shortcut>
+    <shortcut
+        os="unix"
+        name="Ponto de registo"
+        target="sh"
+        commandLine="$INSTALL_PATH/welcome.sh"
+        workingDirectory="$INSTALL_PATH"
+        description="Ponto de registo e impressão de senhas"
+        type="Application"
+        encoding="UTF-8"
+        iconFile="$INSTALL_PATH/icons/welcome.png"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Ponto de registo"/>
+    </shortcut>
+	
+    <shortcut
+        os="windows"
+        name="Recepção"
+        target="$INSTALL_PATH/Reception.bat"
+        commandLine=""
+        workingDirectory="$INSTALL_PATH"
+        description="Recepção"
+        iconFile="$INSTALL_PATH/icons/reception.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Recepção"/>
+    </shortcut>
+    <shortcut
+        os="unix"
+        name="Recepção"
+        target="sh"
+        commandLine="$INSTALL_PATH/reception.sh"
+        workingDirectory="$INSTALL_PATH"
+        description="Recepção"
+        type="Application"
+        encoding="UTF-8"
+        iconFile="$INSTALL_PATH/icons/reception.png"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Recepção"/>
+    </shortcut>
+	
+    <shortcut
+        os="windows"
+        name="QMS QSystem"
+        target="$INSTALL_PATH/StartClient.bat"
+        commandLine=""
+        workingDirectory="$INSTALL_PATH"
+        description="O sistema de interligação de trabalho com os clientes"
+        iconFile="$INSTALL_PATH/icons/client.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Posto de trabalho"/>
+    </shortcut>
+    <shortcut
+        os="unix"
+        name="QMS QSystem"
+        target="sh"
+        commandLine="$INSTALL_PATH/client.sh"
+        workingDirectory="$INSTALL_PATH"
+        description="O sistema de interligação de trabalho com os clientes"
+        type="Application"
+        encoding="UTF-8"
+        iconFile="$INSTALL_PATH/icons/client.png"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Posto de trabalho"/>
+    </shortcut>
+    
+    <shortcut
+        os="windows"
+        name="Servidor QSystem"
+        target="$INSTALL_PATH/StartServer.bat"
+        commandLine=""
+        workingDirectory="$INSTALL_PATH"
+        description="Servidor QSystem"
+        iconFile="$INSTALL_PATH/icons/server.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Servidor"/>
+    </shortcut>
+    <shortcut
+        os="unix"
+        name="Servidor"
+        target="sh"
+        commandLine="$INSTALL_PATH/server.sh"
+        workingDirectory="$INSTALL_PATH"
+        description="Servidor"
+        type="Application"
+        encoding="UTF-8"
+        iconFile="$INSTALL_PATH/icons/server.png"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Servidor"/>
+    </shortcut>
+    
+    <shortcut
+        os="windows"
+        name="Administração do QSystem"
+        target="$INSTALL_PATH/StartAdmin.bat"
+        commandLine=""
+        workingDirectory="$INSTALL_PATH"
+        description="Administração do QSystem"
+        iconFile="$INSTALL_PATH/icons/admin.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Administrador"/>
+    </shortcut>
+    <shortcut
+        os="unix"
+        name="Administração do QSystem"
+        target="sh"
+        commandLine="$INSTALL_PATH/admin.sh"
+        workingDirectory="$INSTALL_PATH"
+        description="Administração do QSystem"
+        type="Application"
+        encoding="UTF-8"
+        iconFile="$INSTALL_PATH/icons/admin.png"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Administrador"/>
+    </shortcut>
+    <shortcut
+        os="windows"
+        name="Desinstalar QSystem"
+        target="$INSTALL_PATH/Uninstaller/uninstaller.jar"
+        commandLine=""
+        workingDirectory="$USER_HOME"
+        description="Desinstalar QSystem"
+        iconFile="$INSTALL_PATH/icons/uninstall.ico"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="no"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Ficheiros base"/>
+    </shortcut>
+    <shortcut
+        os="unix"
+        name="Desinstalar QSystem"
+        target="java"
+        commandLine="-cp $INSTALL_PATH/Uninstaller/uninstaller.jar com.izforge.izpack.uninstaller.Uninstaller"
+        workingDirectory="$INSTALL_PATH"
+        description="Desinstalar QSystem"
+        type="Application"
+        encoding="UTF-8"
+        iconFile="$INSTALL_PATH/icons/uninstall.png"
+        iconIndex="0"
+        initialState="normal"
+        programGroup="yes"
+        desktop="yes"
+        applications="no"
+        startMenu="no"
+        startup="no">
+        <createForPack name="Ficheiros base"/>
+    </shortcut>
+</shortcuts>

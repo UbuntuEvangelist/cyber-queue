@@ -1,0 +1,502 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['reports', 'src' ]
+            includes =  [ '**/*.java' ]
+        }
+        resources {
+            srcDirs = ['reports', 'src' ]
+            excludes =  [ '**/*.form', '**/*.orig', , '**/*.java' ]
+            
+        }
+    }
+}
+
+// NetBeans will automatically add "run" and "debug" tasks relying on the
+// "mainClass" property. You may however define the property prior executing
+// tasks by passing a "-PmainClass=<QUALIFIED_CLASS_NAME>" argument.
+//
+// Note however, that you may define your own "run" and "debug" task if you
+// prefer. In this case NetBeans will not add these tasks but you may rely on
+// your own implementation.
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'ru.apertum.qsystem.About'
+}
+
+repositories {
+    mavenCentral()
+    // You may define additional repositories, or even remove "mavenCentral()".
+    // Read more about repositories here:
+    //   http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:repositories
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+dependencies {
+    compile name: 'jcalendar-1.4.1.v201109071408'
+    compile files('lib/jcalendar-1.4.1.v201109071408.jar')
+    // TODO: Add dependencies here ...
+    // You can read more about how to add dependency here:
+    //   http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
+    testCompile group: 'junit', name: 'junit', version: '4.10' 
+    compile fileTree(dir: 'lib', include: '**/*.jar')
+    
+    compile( group: 'mysql', name: 'mysql-connector-java', version: '5.1.33'){ transitive = false }
+    compile( group: 'com.h2database', name: 'h2', version: '1.4.185'){ transitive = false }
+
+    compile( group: 'org.springframework', name: 'spring-core', version: '4.0.0.RELEASE'){ transitive = false }
+    compile( group: 'org.springframework', name: 'spring-beans', version: '4.0.0.RELEASE'){ transitive = false }
+    compile( group: 'org.springframework', name: 'spring-context', version: '4.0.0.RELEASE'){ transitive = false }
+    compile( group: 'org.springframework', name: 'spring-jdbc', version: '4.0.0.RELEASE'){ transitive = false }
+    compile( group: 'org.springframework', name: 'spring-expression', version: '4.0.0.RELEASE'){ transitive = false }
+        
+    compile( group: 'org.springframework', name: 'spring-tx', version: '4.0.0.RELEASE'){ transitive = false }
+    compile( group: 'org.springframework', name: 'spring-orm', version: '4.0.0.RELEASE'){ transitive = false }
+    compile( group: 'org.hibernate', name: 'hibernate-c3p0', version: '4.3.6.Final'){ transitive = false }
+    compile( group: 'org.hibernate', name: 'hibernate-core', version: '4.3.6.Final'){ transitive = false }
+    compile( group: 'org.hibernate.common', name: 'hibernate-commons-annotations', version: '4.0.5.Final'){ transitive = false }
+    compile( group: 'org.jboss.logging', name: 'jboss-logging', version: '3.1.4.GA'){ transitive = false }
+    compile( group: 'c3p0', name: 'c3p0', version: '0.9.1.2'){ transitive = false }
+    compile( group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.0.Final'){ transitive = false }
+
+    compile( group: 'org.slf4j', name: 'slf4j-api', version: '1.6.1'){ transitive = false }
+    compile( group: 'javax.transaction', name: 'jta', version: '1.1'){ transitive = false }
+    compile( group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'){ transitive = false }
+    compile( group: 'dom4j', name: 'dom4j', version: '1.6.1'){ transitive = false }
+    compile( group: 'antlr', name: 'antlr', version: '2.7.7'){ transitive = false }
+    compile( group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.6.1'){ transitive = false }
+    compile( group: 'log4j', name: 'log4j', version: '1.2.15'){ transitive = false }
+    compile( group: 'com.lowagie', name: 'itext', version: '4.2.1'){ transitive = false }
+    compile( group: 'net.java.dev.beansbinding', name: 'beansbinding', version: '1.2.1'){ transitive = false }
+    compile( group: 'net.sourceforge.barbecue', name: 'barbecue', version: '1.5-beta1'){ transitive = false }
+    compile( group: 'com.google.zxing', name: 'core', version: '2.2'){ transitive = false }
+
+    compile( group: 'commons-collections', name: 'commons-collections', version: '3.2.2'){ transitive = false }
+    compile( group: 'commons-logging', name: 'commons-logging', version: '1.1.1'){ transitive = false }
+    compile( group: 'commons-pool', name: 'commons-pool', version: '1.6'){ transitive = false }
+    compile( group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'){ transitive = false }
+    compile( group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'){ transitive = false }
+    compile( group: 'commons-digester', name: 'commons-digester', version: '2.1'){ transitive = false }
+    compile( group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'){ transitive = false }
+    compile( group: 'org.apache.commons', name: 'commons-configuration2', version: '2.1.1'){ transitive = false }
+    compile( group: 'commons-codec', name: 'commons-codec', version: '1.10'){ transitive = false }
+    compile( group: 'commons-cli', name: 'commons-cli', version: '1.4'){ transitive = false }
+
+
+    compile( group: 'jfree', name: 'jcommon', version: '1.0.16'){ transitive = false }
+    compile( group: 'jfree', name: 'jfreechart', version: '1.0.13'){ transitive = false }
+
+    compile( group: 'javax.help', name: 'javahelp', version: '2.0.05'){ transitive = false }
+
+    compile( group: 'com.googlecode.sli4j', name: 'sli4j-slf4j-log4j', version: '2.0'){ transitive = false }
+
+    compile( group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.1'){ transitive = false }
+    compile( group: 'org.apache.httpcomponents', name: 'httpcore-nio', version: '4.1'){ transitive = false }
+
+    compile( group: 'net.sf.jasperreports', name: 'jasperreports', version: '5.2.0'){ transitive = false }
+    compile( group: 'net.sf.jasperreports', name: 'jasperreports-fonts', version: '4.0.0'){ transitive = false }
+
+    compile( group: 'com.google.code.gson', name: 'gson', version: '2.8.0'){ transitive = false }
+    
+    
+    compile( group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-util', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-continuation', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-http', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-io', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-servlets', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-security', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-jsp', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-runner', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-xml', version: '9.0.4.v20130625'){ transitive = false }
+    compile( group: 'org.eclipse.jetty', name: 'jetty-annotations', version: '9.0.4.v20130625'){ transitive = false }
+
+    compile( group: 'org.glassfish', name: 'javax.servlet', version: '3.0'){ transitive = false }
+    compile( group: 'javax.mail', name: 'mail', version: '1.4.5'){ transitive = false }
+    compile( group: 'net.lingala.zip4j', name: 'zip4j', version: '1.3.2'){ transitive = false }
+    compile( group: 'groovy', name: 'groovy-all', version: '1.1-rc-1'){ transitive = false}
+}
+
+jar {
+    entryCompression ZipEntryCompression.STORED
+    manifest {
+        attributes(
+         'Manifest-Version': '1.0',
+         'Class-Path': configurations.compile.collect { "lib/$it.name" }.join(' '),
+         'Main-Class': 'ru.apertum.qsystem.client.forms.FAdmin'   
+        )
+    }
+    
+    //    baseName = 'QSystem'
+    //    from('src') {
+    //        include '**/*.*'
+    //        exclude '**/*.java'
+    //        exclude '**/*.form'
+    //        exclude '**/*.orig'
+    //    }
+    //    from('reports') {
+    //        include '**/*.*'
+    //        exclude '**/*.java'
+    //        exclude '**/*.orig'
+    //    }
+    
+}
+
+task copyDeps(type: Copy) {
+    from configurations.compile
+    into 'dist/lib/'
+}
+
+task copylib(type: Copy) {
+    dependsOn copyDeps
+    from 'build/libs'
+    into 'dist/'
+}
+// выполнить этот такс чтобы собрать папку после компиляции на манер анта
+task dist() {
+    dependsOn copylib
+}
+
+// Этой штукой все результаты закопируем в dist так как это делал NB
+//build.dependsOn(copylib)
+
+
+task runAdmin (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.client.forms.FAdmin'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FAdmin'
+        args '-ide'
+        args '--debug'
+        args '-uep'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugAdmin (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.client.forms.FAdmin'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FAdmin'
+        args '-ide'
+        args '--debug'
+        args '-uep'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task runServer (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.server.QServer'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.server.QServer'
+        args '-ide'
+        args '--debug'
+        args '-http'
+        args '8081'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugServer (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.server.QServer'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.server.QServer'
+        args '-ide'
+        args '--debug'
+        args '-http'
+        args '8081'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+
+task runClient (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.client.forms.FClient'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FClient'
+        args '-ide'
+        args '-s'
+        args '127.0.0.1'
+        args '-cport'
+        args '3129'
+        args '-sport'
+        args '3128'
+        args '-cfg'
+        args 'config/clientboard.xml'
+        args '+cfgfx'
+        args 'config/clientboardfx.properties'
+        args '++point'
+        args '234'
+        args '-d'
+        args '++terminal'
+        args '-np'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugClient (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.client.forms.FClient'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FClient'
+        args '-ide'
+        args '-s'
+        args '127.0.0.1'
+        args '-cport'
+        args '3129'
+        args '-sport'
+        args '3128'
+        args '-cfg'
+        args 'config/clientboard.xml'
+        args '+cfgfx'
+        args 'config/clientboardfx.properties'
+        args '++point'
+        args '234'
+        args '-d'
+        args '++terminal'
+        args '-np'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+
+task runWelcome (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.client.forms.FWelcome'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FWelcome'
+        args '-ide'
+        args '-s'
+        args '127.0.0.1'
+        args '-sport'
+        args '3128'
+        args '-cport'
+        args '3129'
+        args '--debug'
+        args '-wm'
+        args 'touch'
+        //args '+-wm,--welcome-mode <touch,info,med,btn,kbd>'
+        args '+demo'
+        args '+clangs'
+        args '+keyboard'
+        args '-ndiv'
+        args '->'
+        args '-httpg'
+        args '8081'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugWelcome (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.client.forms.FWelcome'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FWelcome'
+        args '-ide'
+        args '-s'
+        args '127.0.0.1'
+        args '-sport'
+        args '3128'
+        args '-cport'
+        args '3129'
+        args '--debug'
+        args '-wm'
+        args 'touch'
+        args '+info'
+        args '+buttons'
+        args '+demo'
+        args '+clangs'
+        args '+keyboard'
+        args '-ndiv'
+        args '->'
+        args '-httpg'
+        args '8081'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+
+task runReception (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.client.forms.FReception'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FReception'
+        args '-ide'
+        args '--debug'
+        args '-s'
+        args '127.0.0.1'
+        args '-cport'
+        args '3129'
+        args '-sport'
+        args '3128'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugReception (dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.client.forms.FReception'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FReception'
+        args '-ide'
+        args '--debug'
+        args '-s'
+        args '127.0.0.1'
+        args '-cport'
+        args '3129'
+        args '-sport'
+        args '3128'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+
+task runConfigServer(dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.client.forms.FServerConfig'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FServerConfig'
+        args '-ide'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugConfigServer(dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.client.forms.FServerConfig'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.forms.FServerConfig'
+        args '-ide'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+
+task runTabloRedactor(dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.client.TabloRedactor'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.TabloRedactor'
+        args '-tcfg'
+        args 'config/fractal-part-board.xml'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugTabloRedactor(dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.client.TabloRedactor'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.client.TabloRedactor'
+        args '-tcfg'
+        args 'config/fractal-part-board.xml'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+
+task runUB(dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        main = 'ru.apertum.qsystem.ub485.core.UBForm'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.ub485.core.UBForm'
+        args '-ide'
+        args '+start'
+        args '--debug'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+    
+task debugUB(dependsOn: 'classes', type: JavaExec) {
+    doFirst {
+        debug = true
+        main = 'ru.apertum.qsystem.ub485.core.UBForm'
+        classpath = sourceSets.main.runtimeClasspath
+        args 'ru.apertum.qsystem.ub485.core.UBForm'
+        args '-ide'
+        args '+start'
+        args '--debug'
+        systemProperty 'simple.message', 'Hello '
+    }
+    doLast {}
+}
+
+//*****************************************************************************
+//******   MAKE INSTALL   *****************************************************
+//*****************************************************************************
+
+// зависимости выполняются по алфавиту по ходу.
+task acls() {
+    doFirst{
+        println 'remove temp folders... '
+        delete 'build', 'dist' //TODO uncomment it
+    }
+}
+
+// выполнить этот таск для сбора инсталляхи
+task makeinstall(type: Exec) {
+    
+    doFirst {
+        println 'install package... '
+        workingDir '/installation/'
+        commandLine workingDir.toString() + '/makeInstall.bat'
+    }
+    
+    doLast{
+        println 'Install package has been created!'
+    }
+}
+
+task bzip(type: Zip) {
+    String fname = './src/ru/apertum/qsystem/common/version.properties';
+    File f = new File(fname);
+    if( f.exists() ) {
+        from './'
+        include 'readme_rus.txt', 'readme_eng.txt', 'readme_spa.txt',  'readme_astra-linux.txt'
+        from './installation/'
+        include 'install.jar'
+        from './installation/resource/txt/'
+        include 'install.bat', 'install.sh'
+        Properties props = new Properties()
+        props.load(new FileInputStream(f))
+        archiveName 'qsystem-' + props.version + '.zip'
+        destinationDir(file('./building/'))
+    }
+}
+
+// тут не забываем что зависимости разрешаются в алфавитном порядке
+makeinstall.dependsOn(acls)
+makeinstall.dependsOn(build)
+makeinstall.dependsOn(copylib)
+makeinstall.finalizedBy(bzip)
+
+

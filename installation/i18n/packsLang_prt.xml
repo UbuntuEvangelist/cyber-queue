@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<langpack>
+	<str id="mainFiles.description" txt="Ficheiros base, livrarias, recursos gráficos."/>
+	<str id="workPlace.description" txt="Instalando a estação de operador. A aplicar o ficheiro de configuração na estação de operador."/>
+	<str id="server.description" txt="Instalando componentes do servidor: ferramentas de configuração, ficheiros de configuração, recursos do servidor."/>
+	<str id="admin.description" txt="Instalando a estação de administração. A aplicar o ficheiro de configuração e componentes de gestão."/>
+	<str id="registrationPoint.description" txt="A instalar o ponto de registo: as ferramentas de configuração, ficheiros de configuração, recursos do servidor."/>
+	<str id="reception.description" txt="Instalando a estação de recepção: ferramentas de configuração, ficheiros de configuração."/>
+	<str id="journal.description" txt="Pequeno mas muito flexivel plugin de CRM para a recepção e estações."/>
+	<str id="microsound.description" txt="Intercom como plugin para recepção e local de trabalho."/>
+	<str id="docs.description" txt="Documentação do sistema: Manual de Administração do QSystem, Manual do Utilizador do QSystem, Manual de programação do sistema de Reports"/>
+	<str id="forArmCP.txt" txt="Para estações de operador e ponto de registo:"/>
+	<str id="forArmCP.id" txt="Para estações de operador e ponto de registo:"/>
+</langpack>

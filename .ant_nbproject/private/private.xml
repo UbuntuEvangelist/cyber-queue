@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/ru/apertum/qsystem/client/forms/FWelcome.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>1288</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/server/model/QService.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/client/forms/FWelcome.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/client/Locales.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/client/model/QButton.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/client/forms/PComplexService.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/common/version.properties</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/client/forms/FReception.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/common/Uses.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/common/QConfig.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/client/forms/FAdmin.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/server/QServer.java</file>
+            <file>file:/E:/WORK/apertum-qsystem/src/ru/apertum/qsystem/common/RunningLabel.java</file>
+        </group>
+    </open-files>
+</project-private>

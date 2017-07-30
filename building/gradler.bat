@@ -1,0 +1,5 @@
+cd ..
+
+gradle makeinstall
+
+pause

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<langpack>
+	<str id="forArmCP" txt="Para postos de atendimento e ponto de registo:"/>
+	<str id="servAddr" txt="Endereço do Servidor:"/>
+	<str id="servPort" txt="Porto do Servidor:"/>
+	<str id="forAdmin" txt="Para administração:"/>
+	<str id="CPaddr" txt="Endereço do ponto de registo:"/>
+	<str id="CPport" txt="Porto do ponto de registo:"/>
+	<str id="requestServ" txt="Para o servidor de recolha do inquerito ao cliente com postos de trabalho e ponto de registo:"/>
+	<str id="requestClient" txt="A numeração da posição do posto de atendimento (opcional):"/>
+	<str id="clnPort" txt="Porto do Cliente:"/>
+	<str id="clnPoint" txt="Número do posto de trabalho:"/>
+	<str id="forCP" txt="Para o ponto de registo:"/>
+	<str id="kindCP" txt="Escolha o tipo de ponto de registo:"/>
+	<str id="tach" txt="Escolha os Serviços no terminal touch"/>
+	<str id="buttons" txt="Escolha os Serviços para os botões do terminal"/>
+	<str id="multylng" txt="Multilinguistico (para o ponto de registo)"/>
+	<str id="serverboard" txt="Mostrar o painel principal"/>
+	<str id="clientboard" txt="Mostrar o painel de operador"/>
+</langpack>

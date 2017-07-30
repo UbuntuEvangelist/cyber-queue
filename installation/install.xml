@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<!-- 
+    Это скрипт формирования инсталяционного приложения
+-->
+<izpack:installation version="5.0"
+                     xmlns:izpack="http://izpack.org/schema/installation"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+
+    <!-- 
+        Информация о продукте.
+    -->
+    <info>
+        <appname>QSystem</appname>
+        <appversion>[]</appversion>
+        <authors>
+            <author name="Product of ''Apertum Projects''" email="info@apertum.ru"/>
+            <author name="Develop by Evgeniy V. Egorov" email="egorov@apertum.ru"/>
+        </authors>
+        <url>http://www.qsystem.info</url>
+        <javaversion>1.8.0</javaversion>
+        <requiresjdk>no</requiresjdk>
+        <run-privileged condition="izpack.windowsinstall.vista|izpack.macinstall"/>
+    </info>
+	
+
+    <!-- 
+        Параметры GUI. Пока без применения look & feel
+    -->
+    <guiprefs width="800" height="480" resizable="yes">
+        <modifier key="labelGap" value="2"/>
+        <modifier key="useHeadingPanel" value="yes"/>
+        <modifier key="headingImageOnLeft" value="yes"/>
+        <modifier key="headingLineCount" value="1"/>
+        <modifier key="headingPanelCounterPos" value="inNavigationPanel"/>
+    </guiprefs>
+	
+    <!--
+        Для возможности создавать ярлыки под windows
+    -->
+    <natives>
+		<native type="izpack" name="ShellLink.dll"/>
+		<native type="izpack" name="ShellLink_x64.dll"/>
+		<native type="izpack" name="WinSetupAPI.dll"/>
+		<native type="izpack" name="WinSetupAPI_x64.dll"/>
+	</natives>
+
+    <!-- 
+        <langpack iso3="eng"/>
+        <langpack iso3="fra"/>
+		<langpack iso3="deu"/>
+    -->
+    <locale>
+	    <langpack iso3="eng"/>
+        <langpack iso3="rus"/>
+		<langpack iso3="ukr"/>
+		<langpack iso3="ron"/>
+		<langpack iso3="prt"/>
+    </locale>
+
+    <!-- 
+        Это ресурсы для работы инсталятора. Тексты, лицензия и т.д.
+    -->
+    <resources>
+        <res id="userInputSpec.xml" src="userInputSpec.xml" />
+		<res id="userInputLang.xml_eng" src="i18n/userInputLang_eng.xml" />
+        <res id="userInputLang.xml_rus" src="i18n/userInputLang_rus.xml" />
+		<res id="userInputLang.xml_ukr" src="i18n/userInputLang_ukr.xml" />
+		<res id="userInputLang.xml_ron" src="i18n/userInputLang_ron.xml" />
+		<res id="userInputLang.xml_prt" src="i18n/userInputLang_prt.xml" />
+
+		<res id="HTMLInfoPanel.info_eng" src="i18n/about_eng.html"/>
+        <res id="HTMLInfoPanel.info_rus" src="i18n/about_rus.html"/>
+		<res id="HTMLInfoPanel.info_ukr" src="i18n/about_ukr.html"/>
+		<res id="HTMLInfoPanel.info_ron" src="i18n/about_ron.html"/>
+		<res id="HTMLInfoPanel.info_prt" src="i18n/about_prt.html"/>
+		
+		<res id="LicencePanel.licence_eng" src="i18n/license-gpl3-eng.txt"/>
+		<res id="LicencePanel.licence_rus" src="i18n/license-gpl3-rus.txt"/>
+		<res id="LicencePanel.licence_ukr" src="i18n/license-gpl3-ukr.txt"/>
+		<res id="LicencePanel.licence_ron" src="i18n/license-gpl3-ron.txt"/>
+		<res id="LicencePanel.licence_prt" src="i18n/license-gpl3-prt.txt"/>
+		
+        <res id="InfoPanel.info" src="../src/ru/apertum/qsystem/common/version.properties"/>
+        <res id="shortcutSpec.xml_eng" src="i18n/shortcutSpec_eng.xml"/>
+		<res id="shortcutSpec.xml_rus" src="i18n/shortcutSpec_rus.xml"/>
+		<res id="shortcutSpec.xml_ukr" src="i18n/shortcutSpec_ukr.xml"/>
+		<res id="shortcutSpec.xml_ron" src="i18n/shortcutSpec_ron.xml"/>
+		<res id="shortcutSpec.xml_prt" src="i18n/shortcutSpec_prt.xml"/>
+		
+        <res id="Installer.image" src="resource/img/install_img.png"/>
+		<res id="packsLang.xml_eng" src="i18n/packsLang_eng.xml"/>
+        <res id="packsLang.xml_rus" src="i18n/packsLang_rus.xml"/>
+		<res id="packsLang.xml_ukr" src="i18n/packsLang_ukr.xml"/>
+		<res id="packsLang.xml_prt" src="i18n/packsLang_prt.xml"/>
+		
+		<res id="installer.langsel.img" src="resource/img/qlang.jpg" />
+    </resources>
+
+    <!-- 
+        Это последовательность диалоговых и информатионных страниц инсталятора
+    -->
+    <panels>
+        <panel classname="HelloPanel" id="HelloPanel"/>
+        <panel classname="HTMLInfoPanel" id="HTMLInfoPanel"/>
+        <panel classname="InfoPanel" id="InfoPanel"/>
+		<panel classname="LicencePanel" id="LicencePanel"/>
+        <panel classname="TargetPanel" id="TargetPanel"/>
+        <panel classname="PacksPanel" id="PacksPanel"/>
+        <panel classname="UserInputPanel" id="UserInputPanel"/>
+        <panel classname="SummaryPanel" id="SummaryPanel"/>
+        <panel classname="InstallPanel" id="InstallPanel"/>
+        <panel classname="ShortcutPanel" id="ShortcutPanel"/>
+        <panel classname="SimpleFinishPanel" id="SimpleFinishPanel"/>
+    </panels>
+
+    <!-- 
+        Файлы, включенный в дистрибутив.
+        Одновременно для Win и nix.
+        Указываем что и откуда включить в пакет и куда все это потом поместить.
+    -->
+    <packs>
+        <pack id="mainFiles" name="Main files" required="yes">
+            <description>Основные файлы</description>
+            <file src="../dist" targetdir="$INSTALL_PATH"/>
+            <file src="i18n/about_eng.html" targetdir="$INSTALL_PATH"/>
+			<file src="i18n/about_rus.html" targetdir="$INSTALL_PATH"/>
+			<file src="i18n/about_ukr.html" targetdir="$INSTALL_PATH"/>
+			<file src="i18n/license-gpl3-eng.txt" targetdir="$INSTALL_PATH/license/"/>
+			<file src="i18n/license-gpl3-rus.txt" targetdir="$INSTALL_PATH/license/"/>
+			<file src="i18n/license-gpl3-ukr.txt" targetdir="$INSTALL_PATH/license/"/>
+			<file src="../readme_rus.txt" targetdir="$INSTALL_PATH/"/>
+			<file src="../readme_eng.txt" targetdir="$INSTALL_PATH/"/>
+			<file src="../readme_spa.txt" targetdir="$INSTALL_PATH/"/>
+			<file src="../config/langs.properties" targetdir="$INSTALL_PATH/config/"/>
+			<fileset dir="../config/board" includes="*.jpg,*.gif,*.png,*.mpg,*.txt" targetdir="$INSTALL_PATH/config/board/"/>
+			<fileset dir="../languages" includes="*.jar,*.bat,*.txt" targetdir="$INSTALL_PATH/languages/"/>
+            <fileset os="windows" dir="resource/img" includes="*.ico" targetdir="$INSTALL_PATH/icons/"/>
+            <fileset os="unix" dir="resource/img" includes="*.png" targetdir="$INSTALL_PATH/icons/"/>
+			<singlefile src="../plugins/" target="$INSTALL_PATH/plugins"/>
+			<fileset dir="../plugins" includes="*.txt" targetdir="$INSTALL_PATH/plugins/"/>
+			<file os="windows" src="resource/txt/version.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/version.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/version.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<file src="../config/qsystem.properties" targetdir="$INSTALL_PATH/config/"/>
+        </pack>
+        <!-- 
+        Для сервера кроме самих исполняемых библиотек еще нужно 
+        библиотеки для работы с COM-портом и скрипт разворачивания БД
+        -->
+        <pack id="workPlace" name="Work place" required="no">
+            <description>Рабочее место оператора</description>
+            <file os="windows" src="resource/txt/StartClient.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/client.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/client.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<file os="windows" src="resource/txt/StartClientDemo.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/clientdemo.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/clientdemo.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<file os="windows" src="resource/txt/StartTabloRedactor.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/starttabloredactor.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/starttabloredactor.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+            <file src="../config/clientboard.xml" targetdir="$INSTALL_PATH/config/"/>
+			<parsable encoding="utf-8" targetfile="$INSTALL_PATH/config/clientboard.xml"/>
+			<parsable os="windows" targetfile="$INSTALL_PATH/StartClient.bat"/>
+            <parsable os="unix" targetfile="$INSTALL_PATH/client.sh"/>
+			<parsable os="windows" targetfile="$INSTALL_PATH/StartClientDemo.bat"/>
+            <parsable os="unix" targetfile="$INSTALL_PATH/clientdemo.sh"/>
+        </pack>
+        <pack id="server" name="Server" required="no" preselected="no">
+            <description>Сервер</description>
+            <!-- fileset os="windows" dir="D:/Files/Downloads/rxtx-2.1-7-bins-r2/rxtx-2.1-7-bins-r2/Windows/i368-mingw32" includes="*.dll" targetdir="${ENV[WINDIR]}/system32"/>
+            <fileset os="unix" dir="D:/Files/Downloads/rxtx-2.1-7-bins-r2/rxtx-2.1-7-bins-r2/Linux/i686-unknown-linux-gnu" includes="*.so" targetdir="$INSTALL_PATH"/ -->
+            <!--file os="windows" src="resource/bin/7za.exe" targetdir="$INSTALL_PATH/dist"/-->
+            <file os="windows" src="resource/txt/admspr.bat" targetdir="$INSTALL_PATH"/>
+            <file os="windows" src="resource/txt/admdbcom.bat" targetdir="$INSTALL_PATH"/>
+            <!--file os="unix" src="resource/bin/jar" targetdir="$INSTALL_PATH/dist"/>
+            <file os="unix" src="resource/bin/libjli.so" targetdir="$INSTALL_PATH/dist"/-->
+            <file os="unix" src="resource/txt/admspr.sh" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/admdbcom.sh" targetdir="$INSTALL_PATH"/>
+            <file src="../db/qsystem.sql" targetdir="$INSTALL_PATH/db/"/>
+            <file src="../db/qsystem_eng.sql" targetdir="$INSTALL_PATH/db/"/>
+            <file src="../db/qsystem_H2.sql" targetdir="$INSTALL_PATH/db/"/>
+            <file src="../db/qsystem_H2_eng.sql" targetdir="$INSTALL_PATH/db/"/>
+            <file src="../config/mainboard.xml" targetdir="$INSTALL_PATH/config/"/>
+            <file src="../config/fractal-part-board.xml" targetdir="$INSTALL_PATH/config/"/>
+            <file src="resource/txt/asfb.dat" targetdir="$INSTALL_PATH/config/"/>
+            <file src="resource/bin/QSystemDB.mv.db" targetdir="$INSTALL_PATH/db/"/>
+			<parsable encoding="utf-8" targetfile="$INSTALL_PATH/config/mainboard.xml"/>
+			<file src="../config/reporter.properties" targetdir="$INSTALL_PATH/config/"/>
+			<file src="../config/reporter.html" targetdir="$INSTALL_PATH/config/"/>
+			<fileset dir="../config/html_main_board/" includes="*.*" targetdir="$INSTALL_PATH/config/html_main_board/"/>
+			<fileset dir="../www/" includes="*.jpg,*.gif,*.png,*.mpg,*.htm,*.html,*.js,*.css" targetdir="$INSTALL_PATH/www/"/>
+			<fileset dir="../www/led-string/" includes="*.jpg,*.gif,*.png,*.mpg,*.htm,*.html,*.js,*.css" targetdir="$INSTALL_PATH/www/led-string/"/>
+			<fileset dir="../www/img/" includes="*.jpg,*.gif,*.png" targetdir="$INSTALL_PATH/www/img/"/>
+			<singlefile src="../www/war/" target="$INSTALL_PATH/www/war"/>
+			<fileset dir="../www/war/" includes="*.war,*.txt,*.pdf" targetdir="$INSTALL_PATH/www/war/"/>
+            <file os="windows" src="resource/txt/StartServer.bat" targetdir="$INSTALL_PATH"/>
+            <file os="windows" src="resource/txt/StopServer.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/server.sh" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/stopserver.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/stopserver.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<file os="windows" src="resource/txt/StartServerDemo.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/serverdemo.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/serverdemo.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<executable targetfile="$INSTALL_PATH/server.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			
+			<file src="../config/qub.properties" targetdir="$INSTALL_PATH/config/"/>
+			<file src="../config/qub.adr" targetdir="$INSTALL_PATH/config/"/>
+			
+			<file os="windows" src="resource/txt/h2.bat" targetdir="$INSTALL_PATH"/>
+			<file os="windows" src="resource/txt/h2w.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/h2.sh" targetdir="$INSTALL_PATH"/>
+			<file os="windows" src="resource/txt/FractalTabloRedactor.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/fractaltabloredactor.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/fractaltabloredactor.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+        </pack>
+        <pack id="admin" name="Administrator" required="no" preselected="no">
+            <description>Администрирование</description>
+            <file src="../config/welcome.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file src="../config/admin.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file os="windows" src="resource/txt/StartAdmin.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/admin.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/admin.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+            <parsable targetfile="$INSTALL_PATH/config/admin.properties"/>
+            <!--file os="windows" src="resource/bin/7za.exe" targetdir="$INSTALL_PATH/dist"/-->
+            <file os="windows" src="resource/txt/admspr.bat" targetdir="$INSTALL_PATH"/>
+            <file os="windows" src="resource/txt/admdbcom.bat" targetdir="$INSTALL_PATH"/>
+            <!--file os="unix" src="resource/bin/jar" targetdir="$INSTALL_PATH/dist"/>
+            <file os="unix" src="resource/bin/libjli.so" targetdir="$INSTALL_PATH/dist"/-->
+            <file os="unix" src="resource/txt/admspr.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/admspr.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+            <file os="unix" src="resource/txt/admdbcom.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/admdbcom.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			
+			<file src="resource/txt/asfb.dat" targetdir="$INSTALL_PATH/config/"/>
+			<file os="windows" src="resource/txt/h2.bat" targetdir="$INSTALL_PATH"/>
+			<file os="windows" src="resource/txt/h2w.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/h2.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/h2.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+        </pack>
+        <pack id="registrationPoint" name="Registration point" required="no" preselected="no">
+            <description>Пункт регистрации</description>
+            <file src="../config/welcome.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file src="../config/welcome_bg.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file src="../config/welcome_buttons.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file os="windows" src="resource/txt/multilangs.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/multilangs.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/multilangs.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+            <file os="windows" src="resource/txt/Welcome.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/welcome.sh" targetdir="$INSTALL_PATH"/>
+			<file os="windows" src="resource/txt/WelcomeDemo.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/welcomedemo.sh" targetdir="$INSTALL_PATH"/>
+			<fileset dir="../languages/flags" includes="*.jpg,*.gif,*.png,*.mpg" targetdir="$INSTALL_PATH/languages/flags/"/>
+            <parsable os="windows" targetfile="$INSTALL_PATH/Welcome.bat"/>
+            <parsable os="unix" targetfile="$INSTALL_PATH/welcome.sh"/>
+			<executable targetfile="$INSTALL_PATH/welcome.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<parsable os="windows" targetfile="$INSTALL_PATH/WelcomeDemo.bat"/>
+            <parsable os="unix" targetfile="$INSTALL_PATH/welcomedemo.sh"/>
+			<executable targetfile="$INSTALL_PATH/welcomedemo.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<parsable targetfile="$INSTALL_PATH/config/langs.properties"/>
+			<file os="windows" src="resource/txt/xsltest.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/xsltest.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/xsltest.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+        </pack>
+		<pack id="reception" name="Reception" required="no" preselected="no">
+            <description>Приемная</description>
+            <file src="../config/welcome.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file src="../config/reception.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file os="windows" src="resource/txt/Reception.bat" targetdir="$INSTALL_PATH"/>
+            <file os="unix" src="resource/txt/reception.sh" targetdir="$INSTALL_PATH"/>
+			<executable targetfile="$INSTALL_PATH/reception.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+			<parsable os="windows" targetfile="$INSTALL_PATH/Reception.bat"/>
+            <parsable os="unix" targetfile="$INSTALL_PATH/reception.sh"/>
+			<parsable targetfile="$INSTALL_PATH/config/langs.properties"/>
+        </pack>
+		<pack id="journal" name="Journal" required="no" preselected="no">
+            <description>Journal</description>
+			<file src="../config/journal.properties" targetdir="$INSTALL_PATH/config/"/>
+            <file  src="../plugins/Journal.jar" targetdir="$INSTALL_PATH/plugins/"/>
+            <!-- Reccursive adding -->
+        </pack>
+		<pack id="microsound" name="Microsound" required="no" preselected="no">
+            <description>Microsound</description>
+            <file  src="../plugins/Microsound.jar" targetdir="$INSTALL_PATH/plugins/"/>
+            <!-- Reccursive adding -->
+        </pack>
+		<pack id="docs" name="Documentation" required="no">
+            <description>Документация</description>
+            <fileset os="windows" dir="../docs" includes="*.pdf" targetdir="$INSTALL_PATH/docs/"/>
+            <!-- Reccursive adding -->
+        </pack>
+        
+    </packs>
+</izpack:installation>
